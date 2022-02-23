@@ -29,9 +29,9 @@
     소켓을 생성하는 함수로, 해당 소켓을 가리키는 socket descriptor를 반환한다.
     
     **param** : domain (통신할 영역)  
-  	 		- PF_INET / AF_INET : IPv4 주소 체계 사용  
-  			- PF_INET6 / AF_INET6 : IPv6 주소 체계 사용  
-   			- PF_LOCAL / AF_LOCAL : 로컬 통신을 위한 UNIX 프로토콜  
+            - PF_INET / AF_INET : IPv4 주소 체계 사용  
+            - PF_INET6 / AF_INET6 : IPv6 주소 체계 사용  
+            - PF_LOCAL / AF_LOCAL : 로컬 통신을 위한 UNIX 프로토콜  
    		type (프로토콜 타입)  
    			- SOCK_STREAM : 서비스 타입 (TCP)  
    			- SOCK_DGRAM : 서비스 타입 (UDP)  
