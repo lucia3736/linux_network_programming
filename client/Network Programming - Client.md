@@ -181,7 +181,7 @@
         nslookup google.com
         ```
         
-        ![Untitled](IMAGES/Untitled.png)
+        ![nslookup](IMAGES/nslookup.png)
         
     2. IP 주소를 가져오는 C 코드를 작성한다. 코드 및 실행 결과는 아래와 같다.
         
@@ -219,7 +219,7 @@
         }
         ```
         
-        ![Untitled](IMAGES/Untitled 1.png)
+        ![DNtoIP](IMAGES/DNtoIP.png)
         
     
     해당 IP 주소를 inet_addr 함수의 파라미터로 입력한다.   
@@ -277,6 +277,6 @@
     }
     ```
     
-    ![Untitled](IMAGES/Untitled 2.png)
+    ![ReceiveSocket](IMAGES/ReceiveSocket.png)
     
     응답으로 받은 데이터는 HTML 형식이다.
