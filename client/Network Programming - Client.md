@@ -28,19 +28,19 @@
     
     소켓을 생성하는 함수로, 해당 소켓을 가리키는 socket descriptor를 반환한다.
     
-    **param** : domain (통신할 영역)
-                     - PF_INET / AF_INET : IPv4 주소 체계 사용
-                     - PF_INET6 / AF_INET6 : IPv6 주소 체계 사용
-                     - PF_LOCAL / AF_LOCAL : 로컬 통신을 위한 UNIX 프로토콜
-                   type (프로토콜 타입)
-                     - SOCK_STREAM : 서비스 타입 (TCP)
-                     - SOCK_DGRAM : 서비스 타입 (UDP)
-                     - SOCK_RAW : TCP/UDP 계층을 거치지 않고 바로 IP 계층 이용
-                   protocol (프로토콜 값)
-                     - IPPROTO_TCP : TCP일 때
-                     - IPPROTO_UDP : UDP일 때
-    **ret** : -1 (소켓 생성 실패)
-            0 이상의 값(socket descriptor)
+    **param** : domain (통신할 영역)  
+                     - PF_INET / AF_INET : IPv4 주소 체계 사용  
+                     - PF_INET6 / AF_INET6 : IPv6 주소 체계 사용  
+                     - PF_LOCAL / AF_LOCAL : 로컬 통신을 위한 UNIX 프로토콜  
+                   type (프로토콜 타입)  
+                     - SOCK_STREAM : 서비스 타입 (TCP)  
+                     - SOCK_DGRAM : 서비스 타입 (UDP)  
+                     - SOCK_RAW : TCP/UDP 계층을 거치지 않고 바로 IP 계층 이용  
+                   protocol (프로토콜 값)  
+                     - IPPROTO_TCP : TCP일 때  
+                     - IPPROTO_UDP : UDP일 때  
+    **ret** : -1 (소켓 생성 실패)  
+            0 이상의 값(socket descriptor)  
     
 2. **서버에 소켓 연결** 
     
@@ -105,11 +105,11 @@
     
     클라이언트가 서버에 연결 요청을 할 때 사용되는 함수이다. connect() 함수가 리턴되는 시점은, 연결 요청이 서버에 의해 수락되거나, 오류가 발생해서 연결 요청이 중단되는 경우이다. 만약 연결 요청이 바로 이루어지지 않고 서버의 대기 큐에서 대기하고 있는 상태라면 connect 함수를 리턴되지 않고, 블로킹 상태에 있게 된다.
     
-    **param** : sockfd(클라이언트 소켓의 socket descriptor)
-                   serv_addr (서버의 주소 정보가 담긴 sockaddr 구조체 변수의 포인터)
-                   addrlen (serv_addr가 가리키는 sockaddr 구조체 변수의 크기)
-    **ret** : -1 (실패)
-             0 (성공)
+    **param** : sockfd(클라이언트 소켓의 socket descriptor)  
+                   serv_addr (서버의 주소 정보가 담긴 sockaddr 구조체 변수의 포인터)  
+                   addrlen (serv_addr가 가리키는 sockaddr 구조체 변수의 크기)  
+    **ret** : -1 (실패)  
+             0 (성공)  
     
 3. **소켓을 통해 데이터 전송**
     
@@ -129,17 +129,17 @@
     
     연결된 서버나 클라이언트로 데이터를 전송하는 함수이다.
     
-    **param** : s(클라이언트 소켓의 socket descriptor)
-                   msg (전송할 데이터)
-                   len (데이터의 바이트 단위 길이)
-                   flags (옵션을 주기 위한 플래그, 따로 옵션을 지정하지 않으려면 0 입력)
-                    - MSG_DONTWAIT : 전송이 block되면 EAGIN, EWOULDBLOCK 오류로 
-                                                       바로 return한다.
-                    - MSG_NOSIGNAL : 상대방과 연결이 끊겼을 때, SIGPIPE 시그널을 받지 않도록 한다. 
-                    - MSG_WAITALL : 요청한 데이터의 크기가 모두 차야 함수를 반환한다. 
-                    - MSG_MORE : 더 전송할 데이터가 있다.
-    **ret** : -1 (실패)
-             -1 이외 (실제 전송한 바이트 수)
+    **param** : s(클라이언트 소켓의 socket descriptor)  
+                   msg (전송할 데이터)  
+                   len (데이터의 바이트 단위 길이)  
+                   flags (옵션을 주기 위한 플래그, 따로 옵션을 지정하지 않으려면 0 입력)  
+                    - MSG_DONTWAIT : 전송이 block되면 EAGIN, EWOULDBLOCK 오류로   
+                                                       바로 return한다.  
+                    - MSG_NOSIGNAL : 상대방과 연결이 끊겼을 때, SIGPIPE 시그널을 받지 않도록 한다.   
+                    - MSG_WAITALL : 요청한 데이터의 크기가 모두 차야 함수를 반환한다.   
+                    - MSG_MORE : 더 전송할 데이터가 있다.  
+    **ret** : -1 (실패)  
+             -1 이외 (실제 전송한 바이트 수)  
     
 4. **소켓에서 데이터 수신**
     
@@ -159,17 +159,17 @@
     
     연결된 소켓으로부터 데이터를 수신하는 함수이다.
     
-    **param** : sockfd(클라이언트 소켓의 socket descriptor)
-                   buff(수신한 메시지를 저장할 버퍼 포인터)
-                   len (버퍼의 바이트 단위 길이)
-                   flags (옵션을 주기 위한 플래그, 따로 옵션을 지정하지 않으려면 0 입력)
-                    - MSG_DONTWAIT : 전송이 block되면 EAGIN, EWOULDBLOCK 오류로 
-                                                       바로 return한다.
-                    - MSG_NOSIGNAL : 상대방과 연결이 끊겼을 때, SIGPIPE 시그널을 받지 않도록 한다. 
-                    - MSG_WAITALL : 요청한 데이터의 크기가 모두 차야 함수를 반환한다. 
-                    - MSG_MORE : 더 전송할 데이터가 있다.
-    **ret** : -1 (실패)
-             -1 이외 (실제 수신한 바이트 수)
+    **param** : sockfd(클라이언트 소켓의 socket descriptor)  
+                   buff(수신한 메시지를 저장할 버퍼 포인터)  
+                   len (버퍼의 바이트 단위 길이)  
+                   flags (옵션을 주기 위한 플래그, 따로 옵션을 지정하지 않으려면 0 입력)  
+                    - MSG_DONTWAIT : 전송이 block되면 EAGIN, EWOULDBLOCK 오류로   
+                                                       바로 return한다.  
+                    - MSG_NOSIGNAL : 상대방과 연결이 끊겼을 때, SIGPIPE 시그널을 받지 않도록 한다.   
+                    - MSG_WAITALL : 요청한 데이터의 크기가 모두 차야 함수를 반환한다.   
+                    - MSG_MORE : 더 전송할 데이터가 있다.  
+    **ret** : -1 (실패)  
+             -1 이외 (실제 수신한 바이트 수)  
     
 5. [google.com](http://google.com) IP 주소 찾기 & 코드 실행
     
@@ -181,7 +181,7 @@
         nslookup google.com
         ```
         
-        ![Untitled](Linux%20%E1%84%82%E1%85%A6%E1%84%90%E1%85%B3%2040e79/Untitled.png)
+        ![Untitled](IMAGES/Untitled.png)
         
     2. IP 주소를 가져오는 C 코드를 작성한다. 코드 및 실행 결과는 아래와 같다.
         
@@ -219,10 +219,10 @@
         }
         ```
         
-        ![Untitled](Linux%20%E1%84%82%E1%85%A6%E1%84%90%E1%85%B3%2040e79/Untitled%201.png)
+        ![Untitled](IMAGES/Untitled 1.png)
         
     
-    해당 IP 주소를 inet_addr 함수의 파라미터로 입력한다 
+    해당 IP 주소를 inet_addr 함수의 파라미터로 입력한다.   
     
     완성된 코드 및 실행 결과는 아래와 같다.
     
@@ -277,6 +277,6 @@
     }
     ```
     
-    ![Untitled](Linux%20%E1%84%82%E1%85%A6%E1%84%90%E1%85%B3%2040e79/Untitled%202.png)
+    ![Untitled](IMAGES/Untitled 2.png)
     
     응답으로 받은 데이터는 HTML 형식이다.
